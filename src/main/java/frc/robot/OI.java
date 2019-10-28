@@ -7,6 +7,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.WristMove;
+import frc.robot.subsystems.Wrist;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -19,6 +25,16 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
+    Joystick xBoxController = new Joystick(RobotMap.wristButtonPort);
+    Button[] xBoxControllerButtons;
+
+    public OI() {
+        xBoxControllerButtons = new Button[xBoxController.getButtonCount()];
+        for(int i = 0; i < xBoxControllerButtons.length; i++)
+            xBoxControllerButtons[i] = new JoystickButton(xBoxController, i + 1);
+        xBoxControllerButtons[0].whileHeld(new WristMove(0.25));
+    }
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
