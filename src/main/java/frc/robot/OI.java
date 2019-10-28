@@ -55,11 +55,19 @@ public class OI {
      }
     }
 
-    public double getLeftY() {
+    public double getJoystickLeftY() {
         return -leftJoystick.getY();
     }
 
-    public double getRightY() {
+    public double getJoystickRightY() {
         return -rightJoystick.getY();
+    }
+
+    public double getXboxLeftY() {
+        return -xBoxController.getRawAxis(1);
+    }
+
+    public double getXboxRightY() {
+        return -xBoxController.getRawAxis(5);
     }
 }
