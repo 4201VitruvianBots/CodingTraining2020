@@ -13,13 +13,16 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class SetTankDrive extends Command {
-  public SetTankDrive() {
+public class DriveStraight extends Command {
+  int maxEncoderCounts;
+  public DriveStraight(int maxEncoderCounts) {
     // Use requires() here to declare subsystem dependencies
+    //requires(Robot.m_subsystem);
+    this.maxEncoderCounts = maxEncoderCounts;
     requires(Robot.driveTrain);
   }
 
-  // Called just before this Command runs the first time
+  // Called just before this Command runs the first
   @Override
   protected void initialize() {
   }
@@ -27,23 +30,26 @@ public class SetTankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.setDriveOutput(Robot.oi.getJoystickLeftY(),Robot.oi.getJoystickRightY());
+    Robot.driveTrain.setDriveOutput(0.5,0.5);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return (Robot.driveTrain.getLeftEncoderCount()>maxEncoderCounts);
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.driveTrain.setDriveOutput(0,0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }
