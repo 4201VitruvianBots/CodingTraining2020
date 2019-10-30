@@ -30,7 +30,7 @@ public class DriveStraight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.setDriveOutput(0.5,0.5);
+    Robot.driveTrain.setDriveOutput(0.25,0.25);
 
   }
 
