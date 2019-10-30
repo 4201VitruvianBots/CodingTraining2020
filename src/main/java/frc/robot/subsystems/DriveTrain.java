@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.SetTankDrive;
 
@@ -37,6 +38,24 @@ public class DriveTrain extends Subsystem {
   public void setDriveOutput(double leftoutput, double rightoutput){
     rf.set(ControlMode.PercentOutput, rightoutput);
     lf.set(ControlMode.PercentOutput, leftoutput);
+  }
+  public int getLeftEncoderCount(){
+    return lf.getSelectedSensorPosition();
+  }
+  public int getRightEncoderCount(){
+    return rf.getSelectedSensorPosition();
+  }
+  public double getLeftRPM(){
+    return lf.getSelectedSensorVelocity();
+  }
+  public double getRightRPM(){
+    return rf.getSelectedSensorVelocity();
+  }
+  public void updateSmartDashboard(){
+    SmartDashboard.putNumber("leftEncoderCount", getLeftEncoderCount());
+    SmartDashboard.putNumber("rightEncoderCount", getRightEncoderCount());
+    SmartDashboard.putNumber("leftRPM", getLeftRPM());
+    SmartDashboard.putNumber("rightRPM", getRightRPM());
   }
   @Override
   public void initDefaultCommand() {
