@@ -19,6 +19,11 @@ public class RobotMap {
     public static int leftRearDriveMotor = 21;
     public static int rightRearDriveMotor = 23;
 
+    public static int wristMotor = 40;
+    public static int cargoIntakeMotor = 60;
+    public static int hatchIntakeMotor = 61;
+    public static int wristButtonPort = 123124;
+    public static int wristMotorEncoder = 40;
     public static int leftElevatorMotor = 30;
     public static int rightElevatorMotor = 32;
 
