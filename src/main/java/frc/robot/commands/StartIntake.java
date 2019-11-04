@@ -13,12 +13,12 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class SetElevator extends Command {
+public class StartIntake extends Command {
   double output;
-  public SetElevator(double output) {
+  public StartIntake(double output) {
     // Use requires() here to declare subsystem dependencies
+    requires(Robot.intake);
     this.output = output;
-    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
@@ -29,7 +29,7 @@ public class SetElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.setElevatorOutput(output);
+    Robot.intake.setHatchOutput(output);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,13 +41,13 @@ public class SetElevator extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-      Robot.elevator.setElevatorOutput(0);
+    Robot.intake.setHatchOutput(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-      end();
+    end();
   }
 }

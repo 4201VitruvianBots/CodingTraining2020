@@ -15,7 +15,6 @@ import frc.robot.Robot;
  */
 public class SetTankDrive extends Command {
   public SetTankDrive() {
-    // Use requires() here to declare subsystem dependencies
     requires(Robot.driveTrain);
   }
 
@@ -27,7 +26,7 @@ public class SetTankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.setDriveOutput(Robot.m_oi.getJoystickLeftY(),Robot.m_oi.getJoystickRightY());
+    Robot.driveTrain.setDriveOutput(Robot.oi.getJoystickLeftY(),Robot.oi.getJoystickRightY());
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.SetElevator;
 import frc.robot.commands.SetTankDrive;
@@ -36,10 +37,27 @@ public class Elevator extends Subsystem {
     le.set(ControlMode.PercentOutput, elevatorOutput);
 
   }
+  public int getLeftEncoderCount(){
+    return le.getSelectedSensorPosition();
+  }
+  public int getRightEncoderCount(){
+    return re.getSelectedSensorPosition();
+  }
+  public double getLeftRPM(){
+    return le.getSelectedSensorVelocity();
+  }
+  public double getRightRPM(){
+    return re.getSelectedSensorVelocity();
+  }
+  public void updateSmartDashboard() {
+    SmartDashboard.putNumber("leftEncoderCount", getLeftEncoderCount());
+    SmartDashboard.putNumber("rightEncoderCount", getRightEncoderCount());
+    SmartDashboard.putNumber("leftRPM", getLeftRPM());
+    SmartDashboard.putNumber("rightRPM", getRightRPM());
+  }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-     setDefaultCommand(new SetElevator());
 
   }
 }
