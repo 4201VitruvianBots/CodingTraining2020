@@ -12,8 +12,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.DriveStraight;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Wrist;
 
@@ -25,11 +27,13 @@ import frc.robot.subsystems.Wrist;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  public static OI m_oi;
-  public static Wrist wrist = new Wrist();
+  public static Elevator elevator = new Elevator();
+  public static DriveTrain driveTrain = new DriveTrain();
   public static Intake intake = new Intake();
-  Command m_autonomousCommand;
+  public static Wrist wrist = new Wrist();
+  public static OI oi;
+
+  Command m_autonomousCommand = new DriveStraight(50000);
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
@@ -38,8 +42,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
-
+    oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

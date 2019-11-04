@@ -21,10 +21,10 @@ public class Intake extends Subsystem {
   public Intake() {
 
   }
-  public void moveCargoMotor(double speed){
+  public void setCargoOutput(double speed){
     cargoIntakeMotor.set (ControlMode.PercentOutput, speed);
   }
-  public void moveHatchMotor(double speed){
+  public void setHatchOutput(double speed){
     hatchIntakeMotor.set (ControlMode.PercentOutput, speed);
   }
   // Put methods for controlling this subsystem
