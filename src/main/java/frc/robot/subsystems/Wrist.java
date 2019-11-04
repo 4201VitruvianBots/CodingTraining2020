@@ -19,22 +19,22 @@ import frc.robot.RobotMap;
 public class Wrist extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private TalonSRX jetTheBoomer = new TalonSRX(RobotMap.wristMotor);
+  private TalonSRX WristMotor = new TalonSRX(RobotMap.wristMotor);
 
   public Wrist(){
-    jetTheBoomer.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    WristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
 
   public int getWristMotorPosition(){
-    return jetTheBoomer.getSelectedSensorPosition();
+    return WristMotor.getSelectedSensorPosition();
   }
 
-  public void moveWristToPosition(int position){
-    jetTheBoomer.set(ControlMode.Position, position);
-  }
+//  public void moveWristToPosition(int position){
+//    jetTheBoomer.set(ControlMode.Position, position);
+//  }
 
-  public void moveWrist(double speed){
-    jetTheBoomer.set(ControlMode.PercentOutput, speed);
+  public void setWristOutput(double speed){
+    WristMotor.set(ControlMode.PercentOutput, speed);
   }
 
   @Override

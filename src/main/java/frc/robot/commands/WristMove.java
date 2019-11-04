@@ -30,7 +30,7 @@ public class WristMove extends Command {
   @Override
   protected void execute() {
 
-    Robot.wrist.moveWrist(output);
+    Robot.wrist.setWristOutput(output);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,7 +42,7 @@ public class WristMove extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.wrist.moveWrist(0);
+    Robot.wrist.setWristOutput(0);
   }
 
   // Called when another command which requires one or more of the same

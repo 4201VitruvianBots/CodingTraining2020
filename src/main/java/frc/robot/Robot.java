@@ -29,11 +29,11 @@ import frc.robot.subsystems.Wrist;
 public class Robot extends TimedRobot {
   public static Elevator elevator = new Elevator();
   public static DriveTrain driveTrain = new DriveTrain();
+  public static Intake intake = new Intake();
+  public static Wrist wrist = new Wrist();
   public static OI oi;
 
   Command m_autonomousCommand = new DriveStraight(50000);
-  public static Wrist wrist = new Wrist();
-  public static Intake intake = new Intake();
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**

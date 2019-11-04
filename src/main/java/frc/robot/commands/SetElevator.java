@@ -14,8 +14,10 @@ import frc.robot.Robot;
  * An example command.  You can replace me with your own command.
  */
 public class SetElevator extends Command {
-  public SetElevator() {
+  double output;
+  public SetElevator(double output) {
     // Use requires() here to declare subsystem dependencies
+    this.output = output;
     requires(Robot.elevator);
   }
 
@@ -27,7 +29,7 @@ public class SetElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.setElevatorOutput(Robot.oi.getXboxLeftY()*0.5);
+    Robot.elevator.setElevatorOutput(output);
   }
 
   // Make this return true when this Command no longer needs to run execute()

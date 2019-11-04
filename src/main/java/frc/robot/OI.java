@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import frc.robot.commands.SetElevator;
+import frc.robot.commands.StartIntake;
 import frc.robot.commands.WristMove;
 import frc.robot.subsystems.Wrist;
 /**
@@ -35,27 +37,27 @@ public class OI {
         xBoxControllerButtons = new Button[xBoxController.getButtonCount()];
         for(int i = 0; i < xBoxControllerButtons.length; i++)
             xBoxControllerButtons[i] = new JoystickButton(xBoxController, i + 1);
-        xBoxControllerButtons[0].whileHeld(new WristMove(0.25));
+        xBoxControllerButtons[5].whileHeld(new SetElevator(0.5)); //elevator down
+        xBoxControllerButtons[4].whileHeld(new SetElevator(-0.5)); //elevator up
+        xBoxControllerButtons[2].whileHeld(new StartIntake(0.75)); //intake out
+        xBoxControllerButtons[1].whileHeld(new StartIntake(-0.75)); //intake in
+        xBoxControllerButtons[3].whileHeld(new WristMove(0.50)); //wrist in
+        xBoxControllerButtons[0].whileHeld(new WristMove(-0.50)); //wrist out
+
 
         leftJoystickButtons = new JoystickButton[leftJoystick.getButtonCount()];
         for(int i=0; i<leftJoystickButtons.length;i++){
             leftJoystickButtons[i] = new JoystickButton(leftJoystick, i + 1);
+//            leftJoystickButtons[2].whileHeld(new Robot.elevator.setElevatorOutput(0.25));
+//            leftJoystickButtons[3].whileHeld(new setElevatorOutput(-0.25));
         }
     }
 
     public double getJoystickLeftY() {
-        return -leftJoystick.getY();
+        return leftJoystick.getY();
     }
 
     public double getJoystickRightY() {
-        return -rightJoystick.getY();
-    }
-
-    public double getXboxLeftY() {
-        return -xBoxController.getRawAxis(1);
-    }
-
-    public double getXboxRightY() {
-        return -xBoxController.getRawAxis(5);
+        return rightJoystick.getY();
     }
 }

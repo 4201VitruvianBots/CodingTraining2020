@@ -15,7 +15,6 @@ import frc.robot.Robot;
  */
 public class SetTankDrive extends Command {
   public SetTankDrive() {
-    // Use requires() here to declare subsystem dependencies
     requires(Robot.driveTrain);
   }
 
