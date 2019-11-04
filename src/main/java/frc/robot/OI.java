@@ -39,10 +39,16 @@ public class OI {
             xBoxControllerButtons[i] = new JoystickButton(xBoxController, i + 1);
         xBoxControllerButtons[5].whileHeld(new SetElevator(0.5)); //elevator down
         xBoxControllerButtons[4].whileHeld(new SetElevator(-0.5)); //elevator up
+
         xBoxControllerButtons[2].whileHeld(new StartIntake(0.75)); //intake out
         xBoxControllerButtons[1].whileHeld(new StartIntake(-0.75)); //intake in
+
         xBoxControllerButtons[3].whileHeld(new WristMove(0.50)); //wrist in
         xBoxControllerButtons[0].whileHeld(new WristMove(-0.50)); //wrist out
+
+        xBoxControllerButtons[6].whileHeld(new SetTankDrive(true)); // gear shifter on
+        xBoxControllerButtons[7].whileHeld(new SetTankDrive(false)); // gear shifter off
+
 
 
         leftJoystickButtons = new JoystickButton[leftJoystick.getButtonCount()];
