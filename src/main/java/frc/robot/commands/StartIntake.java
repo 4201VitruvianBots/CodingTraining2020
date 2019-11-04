@@ -13,10 +13,12 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends Command {
-  public ExampleCommand() {
+public class StartIntake extends Command {
+  double output;
+  public StartIntake(double output) {
     // Use requires() here to declare subsystem dependencies
-    //requires(Robot.m_subsystem);
+    requires(Robot.intake);
+    this.output = output;
   }
 
   // Called just before this Command runs the first time
@@ -27,6 +29,7 @@ public class ExampleCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.intake.setHatchOutput(output);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,11 +41,13 @@ public class ExampleCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.intake.setHatchOutput(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }
