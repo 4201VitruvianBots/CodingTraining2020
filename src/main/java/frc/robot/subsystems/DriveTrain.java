@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
@@ -24,6 +25,8 @@ public class DriveTrain extends Subsystem {
   private TalonSRX lr = new TalonSRX(RobotMap.leftRearDriveMotor);
   private TalonSRX rf = new TalonSRX(RobotMap.rightFrontDriveMotor);
   private TalonSRX rr = new TalonSRX(RobotMap.rightRearDriveMotor);
+
+  private DoubleSolenoid driveShifters = new DoubleSolenoid(RobotMap.PCM_ONE, RobotMap.DriveShiftForward, RobotMap.DriveShiftReverse);
 
   public DriveTrain (){
     rr.set(ControlMode.Follower, rf.getDeviceID());
@@ -57,6 +60,15 @@ public class DriveTrain extends Subsystem {
     SmartDashboard.putNumber("leftRPM", getLeftRPM());
     SmartDashboard.putNumber("rightRPM", getRightRPM());
   }
+
+  public boolean getDriveShifterStatus() {
+    return driveShifters.get() == DoubleSolenoid.Value.kForward ? true : false:
+  }
+
+  public void setDriveShifters(boolean state) {
+    driveShifters.set(state ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

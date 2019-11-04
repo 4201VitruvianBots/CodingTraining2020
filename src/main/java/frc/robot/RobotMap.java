@@ -32,4 +32,9 @@ public class RobotMap {
     public static int leftJoystick = 0;
     public static int rightJoystick = 1;
     public static int xBoxController = 2;
+
+    // Pneumatic Addresses
+    public static int PCM_ONE = 11;
+    public static int DriveShiftForward = 0;
+    public static int DriveShiftReverse = 1;
 }
