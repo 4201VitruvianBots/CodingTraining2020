@@ -26,7 +26,6 @@ public class DriveTrain extends Subsystem {
   private TalonSRX rf = new TalonSRX(RobotMap.rightFrontDriveMotor);
   private TalonSRX rr = new TalonSRX(RobotMap.rightRearDriveMotor);
 
-  private DoubleSolenoid driveShifters = new DoubleSolenoid(RobotMap.PCM_ONE, RobotMap.DriveShiftForward, RobotMap.DriveShiftReverse);
 
   public DriveTrain (){
     rr.set(ControlMode.Follower, rf.getDeviceID());
@@ -61,13 +60,7 @@ public class DriveTrain extends Subsystem {
     SmartDashboard.putNumber("rightRPM", getRightRPM());
   }
 
-  public boolean getDriveShifterStatus() {
-    return driveShifters.get() == DoubleSolenoid.Value.kForward ? true : false:
-  }
 
-  public void setDriveShifters(boolean state) {
-    driveShifters.set(state ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
-  }
 
   @Override
   public void initDefaultCommand() {

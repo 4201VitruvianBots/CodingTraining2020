@@ -13,10 +13,12 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class SetTankDrive extends Command {
-  public SetTankDrive() {
-    requires(Robot.driveTrain);
+public class SetGearShifter extends Command {
+  public SetGearShifter() {
+    // Use requires() here to declare subsystem dependencies
+    //requires(Robot.m_subsystem);
   }
+
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -25,7 +27,6 @@ public class SetTankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.setDriveOutput(Robot.oi.getJoystickLeftY(),Robot.oi.getJoystickRightY());
   }
 
   // Make this return true when this Command no longer needs to run execute()

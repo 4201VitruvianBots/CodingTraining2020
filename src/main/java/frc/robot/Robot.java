@@ -14,10 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveStraight;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Wrist;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,6 +29,7 @@ public class Robot extends TimedRobot {
   public static Intake intake = new Intake();
   public static Wrist wrist = new Wrist();
   public static OI oi;
+  public static GearShifter GearShifter = new GearShifter();
 
   Command m_autonomousCommand = new DriveStraight(50000);
   SendableChooser<Command> m_chooser = new SendableChooser<>();
