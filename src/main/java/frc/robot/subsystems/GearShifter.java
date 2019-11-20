@@ -16,8 +16,13 @@ import frc.robot.RobotMap;
  */
 public class GearShifter extends Subsystem {
   private DoubleSolenoid driveShifters = new DoubleSolenoid(RobotMap.PCM_ONE, RobotMap.DriveShiftForward, RobotMap.DriveShiftReverse);
+
   public boolean getDriveShifterStatus() {
     return driveShifters.get() == DoubleSolenoid.Value.kForward ? true : false;
+  }
+
+  public void setDriveShifters(boolean state) {
+    driveShifters.set(state ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
   }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.

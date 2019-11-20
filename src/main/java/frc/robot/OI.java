@@ -11,10 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import frc.robot.commands.SetElevator;
-import frc.robot.commands.SetTankDrive;
-import frc.robot.commands.StartIntake;
-import frc.robot.commands.WristMove;
+import frc.robot.commands.*;
 import frc.robot.subsystems.Wrist;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -30,14 +27,20 @@ public class OI {
   // Button button = new JoystickButton(stick, buttonNumber);
     public Joystick leftJoystick = new Joystick(RobotMap.leftJoystick);
     public Joystick rightJoystick = new Joystick(RobotMap.rightJoystick);
-    Joystick xBoxController = new Joystick(RobotMap.wristButtonPort);
-    public Button[] leftJoystickButtons;
-    Button[] xBoxControllerButtons;
+    Joystick xBoxController = new Joystick(RobotMap.xBoxController);
+    public Button[] leftJoystickButtons = new Button[11];
+    Button[] xBoxControllerButtons = new Button[10];
 
     public OI() {
-        xBoxControllerButtons = new Button[xBoxController.getButtonCount()];
         for(int i = 0; i < xBoxControllerButtons.length; i++)
             xBoxControllerButtons[i] = new JoystickButton(xBoxController, i + 1);
+
+        for(int i=0; i<leftJoystickButtons.length;i++){
+            leftJoystickButtons[i] = new JoystickButton(leftJoystick, i + 1);
+//            leftJoystickButtons[2].whileHeld(new Robot.elevator.setElevatorOutput(0.25));
+//            leftJoystickButtons[3].whileHeld(new setElevatorOutput(-0.25));
+        }
+
         xBoxControllerButtons[5].whileHeld(new SetElevator(0.5)); //elevator down
         xBoxControllerButtons[4].whileHeld(new SetElevator(-0.5)); //elevator up
 
@@ -47,17 +50,8 @@ public class OI {
         xBoxControllerButtons[3].whileHeld(new WristMove(0.50)); //wrist in
         xBoxControllerButtons[0].whileHeld(new WristMove(-0.50)); //wrist out
 
-        xBoxControllerButtons[6].whileHeld(new SetTankDrive(true)); // gear shifter on
-        xBoxControllerButtons[7].whileHeld(new SetTankDrive(false)); // gear shifter off
-
-
-
-        leftJoystickButtons = new JoystickButton[leftJoystick.getButtonCount()];
-        for(int i=0; i<leftJoystickButtons.length;i++){
-            leftJoystickButtons[i] = new JoystickButton(leftJoystick, i + 1);
-//            leftJoystickButtons[2].whileHeld(new Robot.elevator.setElevatorOutput(0.25));
-//            leftJoystickButtons[3].whileHeld(new setElevatorOutput(-0.25));
-        }
+        xBoxControllerButtons[6].whileHeld(new SetGearShifters(true)); // gear shifter on
+        xBoxControllerButtons[7].whileHeld(new SetGearShifters(false)); // gear shifter off
     }
 
     public double getJoystickLeftY() {
