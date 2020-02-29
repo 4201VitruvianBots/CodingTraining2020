@@ -50,8 +50,8 @@ public class OI {
         xBoxControllerButtons[3].whileHeld(new WristMove(0.50)); //wrist in
         xBoxControllerButtons[0].whileHeld(new WristMove(-0.50)); //wrist out
 
-        xBoxControllerButtons[6].whileHeld(new SetGearShifters(true)); // gear shifter on
-        xBoxControllerButtons[7].whileHeld(new SetGearShifters(false)); // gear shifter off
+//        xBoxControllerButtons[6].whileHeld(new SetGearShifters(true)); // gear shifter on
+//        xBoxControllerButtons[7].whileHeld(new SetGearShifters(false)); // gear shifter off
     }
 
     public double getJoystickLeftY() {

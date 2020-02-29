@@ -29,9 +29,9 @@ public class Robot extends TimedRobot {
   public static Intake intake = new Intake();
   public static Wrist wrist = new Wrist();
   public static OI oi;
-  public static GearShifter GearShifter = new GearShifter();
+  //public static GearShifter GearShifter = new GearShifter();
 
-  Command m_autonomousCommand = new DriveStraight(50000);
+//  Command m_autonomousCommand = new DriveStraight(50000);
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
@@ -85,19 +85,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
-
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
+//    m_autonomousCommand = m_chooser.getSelected();
+//
+//    /*
+//     * String autoSelected = SmartDashboard.getString("Auto Selector",
+//     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+//     * = new MyAutoCommand(); break; case "Default Auto": default:
+//     * autonomousCommand = new ExampleCommand(); break; }
+//     */
+//
+//    // schedule the autonomous command (example)
+//    if (m_autonomousCommand != null) {
+//      m_autonomousCommand.start();
+//    }
   }
 
   /**
@@ -110,13 +110,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+//    // This makes sure that the autonomous stops running when
+//    // teleop starts running. If you want the autonomous to
+//    // continue until interrupted by another command, remove
+//    // this line or comment it out.
+//    if (m_autonomousCommand != null) {
+//      m_autonomousCommand.cancel();
+//    }
   }
 
   /**
